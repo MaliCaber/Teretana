@@ -14,7 +14,20 @@ namespace Teretana
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
+            DodajClana dodajClana = new DodajClana();
+            dodajClana.Show();
+        }
 
+        private void btnClanarina_Click(object sender, EventArgs e)
+        {
+            Clanarina clanarina = new Clanarina();
+            clanarina.Show();
+        }
+
+        private void btnListaClanova_Click(object sender, EventArgs e)
+        {
+            ListaClanova listaclanova = new ListaClanova();
+            listaclanova.Show();
         }
     }
 }

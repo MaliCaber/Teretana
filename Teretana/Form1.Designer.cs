@@ -30,8 +30,8 @@
         {
             btnDodaj = new Button();
             btnClanarina = new Button();
-            btnPretrazi = new Button();
-            btnLog = new Button();
+            btnListaClanova = new Button();
+            btnPosete = new Button();
             SuspendLayout();
             // 
             // btnDodaj
@@ -54,36 +54,40 @@
             btnClanarina.TabIndex = 1;
             btnClanarina.Text = "Clanarina";
             btnClanarina.UseVisualStyleBackColor = true;
+            btnClanarina.Click += btnClanarina_Click;
             // 
-            // btnPretrazi
+            // btnListaClanova
             // 
-            btnPretrazi.Location = new Point(284, 12);
-            btnPretrazi.Name = "btnPretrazi";
-            btnPretrazi.RightToLeft = RightToLeft.No;
-            btnPretrazi.Size = new Size(130, 40);
-            btnPretrazi.TabIndex = 2;
-            btnPretrazi.Text = "Pretrazi clana";
-            btnPretrazi.UseVisualStyleBackColor = true;
+            btnListaClanova.Location = new Point(284, 12);
+            btnListaClanova.Name = "btnListaClanova";
+            btnListaClanova.RightToLeft = RightToLeft.No;
+            btnListaClanova.Size = new Size(130, 40);
+            btnListaClanova.TabIndex = 2;
+            btnListaClanova.Text = "Lista Clanova";
+            btnListaClanova.UseVisualStyleBackColor = true;
+            btnListaClanova.Click += btnListaClanova_Click;
             // 
-            // btnLog
+            // btnPosete
             // 
-            btnLog.Location = new Point(420, 12);
-            btnLog.Name = "btnLog";
-            btnLog.RightToLeft = RightToLeft.No;
-            btnLog.Size = new Size(130, 40);
-            btnLog.TabIndex = 3;
-            btnLog.Text = "Log";
-            btnLog.UseVisualStyleBackColor = true;
+            btnPosete.Location = new Point(420, 12);
+            btnPosete.Name = "btnPosete";
+            btnPosete.RightToLeft = RightToLeft.No;
+            btnPosete.Size = new Size(130, 40);
+            btnPosete.TabIndex = 3;
+            btnPosete.Text = "Posete";
+            btnPosete.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(btnLog);
-            Controls.Add(btnPretrazi);
+            ClientSize = new Size(559, 261);
+            Controls.Add(btnPosete);
+            Controls.Add(btnListaClanova);
             Controls.Add(btnClanarina);
             Controls.Add(btnDodaj);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
@@ -94,7 +98,7 @@
 
         private Button btnDodaj;
         private Button btnClanarina;
-        private Button btnPretrazi;
-        private Button btnLog;
+        private Button btnListaClanova;
+        private Button btnPosete;
     }
 }
