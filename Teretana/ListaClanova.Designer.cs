@@ -105,7 +105,7 @@
             btnOcisti.Name = "btnOcisti";
             btnOcisti.Size = new Size(100, 33);
             btnOcisti.TabIndex = 6;
-            btnOcisti.Text = "Ocisti";
+            btnOcisti.Text = "Ocisti/Osvezi";
             btnOcisti.UseVisualStyleBackColor = true;
             btnOcisti.Click += btnOcisti_Click;
             // 
@@ -121,6 +121,8 @@
             // 
             // dgVelika
             // 
+            dgVelika.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgVelika.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgVelika.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgVelika.Location = new Point(273, 12);
             dgVelika.Name = "dgVelika";
@@ -147,6 +149,8 @@
             Controls.Add(lbConnection);
             Controls.Add(dgVelika);
             Controls.Add(gbPretraga);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "ListaClanova";
             Text = "ListaClanova";
             Load += ListaClanova_Load;

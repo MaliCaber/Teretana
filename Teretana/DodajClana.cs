@@ -131,7 +131,7 @@ namespace Teretana
                     }
                     reader.Close();
 
-                    
+
 
                     QRCodeGenerator QG = new QRCodeGenerator();
                     QRCodeData data = QG.CreateQrCode(ClanID.ToString(), QRCodeGenerator.ECCLevel.H);

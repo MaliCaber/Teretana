@@ -170,6 +170,7 @@
             // 
             // pbSlika
             // 
+            pbSlika.Image = Properties.Resources.image_processing20210620_28232_baqx1v;
             pbSlika.Location = new Point(345, 12);
             pbSlika.Name = "pbSlika";
             pbSlika.Size = new Size(200, 200);

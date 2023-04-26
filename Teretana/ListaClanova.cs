@@ -223,12 +223,41 @@ namespace Teretana
         {
             try
             {
-                ProfilClana pc = new ProfilClana(int.Parse(dgVelika.CurrentRow.Cells[0].Value.ToString()));
+                ProfilClana pc = new ProfilClana(this, int.Parse(dgVelika.CurrentRow.Cells[0].Value.ToString()));
+                pc.Owner = this;
                 pc.Show();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error pri otvaranju profila: " + ex);
+            }
+        }
+        public void OsveziListu()
+        {
+            try
+            {
+                connection.Open();
+                OleDbCommand command = new OleDbCommand();
+                command.Connection = connection;
+                command.CommandText = "SELECT clan.[IDclan], clan.[Ime], clan.[Prezime], clan.[BrTel], clan.[Email], clan.[Adresa], clan.[Index], clan.[Pol], MAX(clana.[DatumUplate]) AS 'Datum Uplate', MAX(clana.[DatumIsteka]) AS 'Datum Isteka', MAX(pos.[Datum]) AS 'Datum Posete'" +
+                    "FROM (Clanovi AS clan LEFT OUTER JOIN Clanarine AS clana ON clan.[IDclan]=clana.[IDclana]) LEFT OUTER JOIN Posete AS pos ON clan.[IDclan]=pos.[IDclana]" +
+                    "GROUP BY clan.[IDclan], clan.[Ime], clan.[Prezime], clan.[BrTel], clan.[Email], clan.[Adresa], clan.[Index], clan.[Pol]";
+
+                OleDbDataAdapter da = new OleDbDataAdapter(command);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dgVelika.DataSource = dt;
+
+                command.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error " + ex);
+            }
+            finally
+            {
+                connection.Close();
             }
         }
     }

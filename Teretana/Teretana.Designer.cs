@@ -1,6 +1,6 @@
 ﻿namespace Teretana
 {
-    partial class Form1
+    partial class Teretana
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,10 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             btnDodaj = new Button();
             btnClanarina = new Button();
             btnListaClanova = new Button();
             btnPosete = new Button();
+            cbDevices = new ComboBox();
+            btnStartCamera = new Button();
+            timer1 = new System.Windows.Forms.Timer(components);
+            pbCamera = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pbCamera).BeginInit();
             SuspendLayout();
             // 
             // btnDodaj
@@ -76,21 +82,60 @@
             btnPosete.TabIndex = 3;
             btnPosete.Text = "Posete";
             btnPosete.UseVisualStyleBackColor = true;
+            btnPosete.Click += btnPosete_Click;
             // 
-            // Form1
+            // cbDevices
+            // 
+            cbDevices.FormattingEnabled = true;
+            cbDevices.Location = new Point(12, 298);
+            cbDevices.Name = "cbDevices";
+            cbDevices.Size = new Size(130, 23);
+            cbDevices.TabIndex = 4;
+            // 
+            // btnStartCamera
+            // 
+            btnStartCamera.Location = new Point(148, 298);
+            btnStartCamera.Name = "btnStartCamera";
+            btnStartCamera.Size = new Size(88, 23);
+            btnStartCamera.TabIndex = 5;
+            btnStartCamera.Text = "Start kamera";
+            btnStartCamera.UseVisualStyleBackColor = true;
+            btnStartCamera.Click += btnStartCamera_Click;
+            // 
+            // timer1
+            // 
+            timer1.Interval = 1000;
+            timer1.Tick += timer1_Tick;
+            // 
+            // pbCamera
+            // 
+            pbCamera.Image = Properties.Resources.image_processing20210620_28232_baqx1v;
+            pbCamera.Location = new Point(12, 70);
+            pbCamera.Name = "pbCamera";
+            pbCamera.Size = new Size(291, 222);
+            pbCamera.SizeMode = PictureBoxSizeMode.Zoom;
+            pbCamera.TabIndex = 6;
+            pbCamera.TabStop = false;
+            // 
+            // Teretana
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(559, 261);
+            ClientSize = new Size(559, 333);
+            Controls.Add(pbCamera);
+            Controls.Add(btnStartCamera);
+            Controls.Add(cbDevices);
             Controls.Add(btnPosete);
             Controls.Add(btnListaClanova);
             Controls.Add(btnClanarina);
             Controls.Add(btnDodaj);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
-            Name = "Form1";
+            Name = "Teretana";
             Text = "Form1";
+            FormClosing += Form1_FormClosing;
             Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)pbCamera).EndInit();
             ResumeLayout(false);
         }
 
@@ -100,5 +145,9 @@
         private Button btnClanarina;
         private Button btnListaClanova;
         private Button btnPosete;
+        private ComboBox cbDevices;
+        private Button btnStartCamera;
+        private System.Windows.Forms.Timer timer1;
+        private PictureBox pbCamera;
     }
 }

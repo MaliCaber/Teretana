@@ -47,11 +47,25 @@
             rbZ = new RadioButton();
             rbM = new RadioButton();
             label8 = new Label();
+            dgUplate = new DataGridView();
+            label9 = new Label();
+            label10 = new Label();
+            dgPosete = new DataGridView();
+            btnIzmeni = new Button();
+            label11 = new Label();
+            btnSlika = new Button();
+            btnObrisi = new Button();
+            btnQR = new Button();
+            pbQR = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pbSlika).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgUplate).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgPosete).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbQR).BeginInit();
             SuspendLayout();
             // 
             // pbSlika
             // 
+            pbSlika.Image = Properties.Resources.image_processing20210620_28232_baqx1v;
             pbSlika.Location = new Point(12, 12);
             pbSlika.Name = "pbSlika";
             pbSlika.Size = new Size(197, 197);
@@ -212,11 +226,121 @@
             label8.TabIndex = 31;
             label8.Text = "Pol:";
             // 
+            // dgUplate
+            // 
+            dgUplate.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgUplate.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgUplate.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgUplate.Location = new Point(694, 12);
+            dgUplate.Name = "dgUplate";
+            dgUplate.ReadOnly = true;
+            dgUplate.RowTemplate.Height = 25;
+            dgUplate.Size = new Size(457, 220);
+            dgUplate.TabIndex = 34;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(633, 15);
+            label9.Name = "label9";
+            label9.Size = new Size(44, 15);
+            label9.TabIndex = 35;
+            label9.Text = "Uplate:";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(633, 246);
+            label10.Name = "label10";
+            label10.Size = new Size(45, 15);
+            label10.TabIndex = 36;
+            label10.Text = "Posete:";
+            // 
+            // dgPosete
+            // 
+            dgPosete.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgPosete.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgPosete.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgPosete.Location = new Point(694, 246);
+            dgPosete.Name = "dgPosete";
+            dgPosete.ReadOnly = true;
+            dgPosete.RowTemplate.Height = 25;
+            dgPosete.Size = new Size(300, 118);
+            dgPosete.TabIndex = 37;
+            // 
+            // btnIzmeni
+            // 
+            btnIzmeni.Location = new Point(230, 289);
+            btnIzmeni.Name = "btnIzmeni";
+            btnIzmeni.Size = new Size(92, 41);
+            btnIzmeni.TabIndex = 38;
+            btnIzmeni.Text = "Sacuvaj";
+            btnIzmeni.UseVisualStyleBackColor = true;
+            btnIzmeni.Click += btnIzmeni_Click;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(231, 246);
+            label11.Name = "label11";
+            label11.Size = new Size(34, 15);
+            label11.TabIndex = 39;
+            label11.Text = "Slika:";
+            // 
+            // btnSlika
+            // 
+            btnSlika.Location = new Point(297, 242);
+            btnSlika.Name = "btnSlika";
+            btnSlika.Size = new Size(75, 23);
+            btnSlika.TabIndex = 40;
+            btnSlika.Text = "Dodaj sliku";
+            btnSlika.UseVisualStyleBackColor = true;
+            btnSlika.Click += btnSlika_Click;
+            // 
+            // btnObrisi
+            // 
+            btnObrisi.Location = new Point(328, 289);
+            btnObrisi.Name = "btnObrisi";
+            btnObrisi.Size = new Size(92, 41);
+            btnObrisi.TabIndex = 41;
+            btnObrisi.Text = "Obrisi";
+            btnObrisi.UseVisualStyleBackColor = true;
+            btnObrisi.Click += btnObrisi_Click;
+            // 
+            // btnQR
+            // 
+            btnQR.Location = new Point(426, 289);
+            btnQR.Name = "btnQR";
+            btnQR.Size = new Size(92, 41);
+            btnQR.TabIndex = 42;
+            btnQR.Text = "QR Kod";
+            btnQR.UseVisualStyleBackColor = true;
+            btnQR.Click += btnQR_Click;
+            // 
+            // pbQR
+            // 
+            pbQR.Location = new Point(445, 217);
+            pbQR.Name = "pbQR";
+            pbQR.Size = new Size(62, 50);
+            pbQR.TabIndex = 43;
+            pbQR.TabStop = false;
+            pbQR.Visible = false;
+            // 
             // ProfilClana
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1264, 681);
+            Controls.Add(pbQR);
+            Controls.Add(btnQR);
+            Controls.Add(btnObrisi);
+            Controls.Add(btnSlika);
+            Controls.Add(label11);
+            Controls.Add(btnIzmeni);
+            Controls.Add(dgPosete);
+            Controls.Add(label10);
+            Controls.Add(label9);
+            Controls.Add(dgUplate);
             Controls.Add(rbZ);
             Controls.Add(rbM);
             Controls.Add(label8);
@@ -236,10 +360,16 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "ProfilClana";
             Text = "ProfilClana";
+            FormClosing += ProfilClana_FormClosing;
             Load += ProfilClana_Load;
             ((System.ComponentModel.ISupportInitialize)pbSlika).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgUplate).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgPosete).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbQR).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -265,5 +395,15 @@
         private RadioButton rbZ;
         private RadioButton rbM;
         private Label label8;
+        private DataGridView dgUplate;
+        private Label label9;
+        private Label label10;
+        private DataGridView dgPosete;
+        private Button btnIzmeni;
+        private Label label11;
+        private Button btnSlika;
+        private Button btnObrisi;
+        private Button btnQR;
+        private PictureBox pbQR;
     }
 }

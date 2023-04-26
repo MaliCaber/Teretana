@@ -20,10 +20,12 @@ namespace Teretana
     public partial class Clanarina : Form
     {
         private OleDbConnection connection = new OleDbConnection();
-        public Clanarina()
+        Teretana T;
+        public Clanarina(Teretana t)
         {
             InitializeComponent();
             connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database.accdb;Persist Security Info=False;";
+            T = t;
         }
 
         FilterInfoCollection filterInfoCollection;
@@ -73,6 +75,7 @@ namespace Teretana
                 captureDevice.WaitForStop();
                 captureDevice.Stop();
             }
+            T.startCamera();
         }
 
         private void timer1_Tick(object sender, EventArgs e)

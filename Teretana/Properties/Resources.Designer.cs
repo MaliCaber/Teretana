@@ -59,5 +59,15 @@ namespace Teretana.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap image_processing20210620_28232_baqx1v {
+            get {
+                object obj = ResourceManager.GetObject("image_processing20210620-28232-baqx1v", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
