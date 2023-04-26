@@ -101,7 +101,12 @@ namespace Teretana
                 command.CommandText = "insert into Posete ([IDclana], [Datum]) " +
                     "values(" + (double)ID + ", '" + DateTime.Now + "')";
                 command.ExecuteNonQuery();
-                MessageBox.Show("Uspesno uneto u bazu podataka");
+                //DODAJ ZVUK AKO JE UNETO AAAAAA
+                //
+                //PROVERA DATUMA ISTEKA CLANARINE
+                //
+                //
+                //
                 command.Dispose();
 
             }
