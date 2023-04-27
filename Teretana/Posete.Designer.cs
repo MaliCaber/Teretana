@@ -39,9 +39,12 @@
             dgVelika.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgVelika.Location = new Point(12, 12);
             dgVelika.Name = "dgVelika";
+            dgVelika.ReadOnly = true;
             dgVelika.RowTemplate.Height = 25;
             dgVelika.Size = new Size(444, 352);
             dgVelika.TabIndex = 0;
+            dgVelika.CellDoubleClick += dgVelika_CellDoubleClick;
+            dgVelika.DataBindingComplete += dgVelika_DataBindingComplete;
             // 
             // Posete
             // 

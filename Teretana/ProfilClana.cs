@@ -29,6 +29,12 @@ namespace Teretana
             id = ID;
             LC = lc;
         }
+        public ProfilClana(Posete pos, int ID)
+        {
+            InitializeComponent();
+            connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database.accdb;Persist Security Info=False;";
+            id = ID;
+        }
 
         public byte[] convertImageToByteArray(Image imageToConvert)
         {
@@ -226,7 +232,8 @@ namespace Teretana
 
         private void ProfilClana_FormClosing(object sender, FormClosingEventArgs e)
         {
-            LC.OsveziListu();
+            if (LC != null)
+                LC.OsveziListu();
         }
 
         private void btnQR_Click(object sender, EventArgs e)

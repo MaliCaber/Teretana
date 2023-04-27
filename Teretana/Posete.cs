@@ -27,8 +27,8 @@ namespace Teretana
                 connection.Open();
                 OleDbCommand command = new OleDbCommand();
                 command.Connection = connection;
-                command.CommandText = "SELECT c.[IDclan], c.[Ime], c.[Prezime], p.[Datum]" +
-                    "FROM Clanovi AS c INNER JOIN Posete AS p ON c.[IDclan]=p.[IDclana]" +
+                command.CommandText = "SELECT c.[IDclan], c.[Ime], c.[Prezime], p.[Datum], p.[Istekla] AS Istekla " +
+                    "FROM (Clanovi AS c INNER JOIN Posete AS p ON c.[IDclan]=p.[IDclana])" +
                     "ORDER BY p.[IDposete] DESC";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(command);
@@ -46,6 +46,36 @@ namespace Teretana
             finally
             {
                 connection.Close();
+            }
+
+        }
+
+        private void dgVelika_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewRow Myrow in dgVelika.Rows)
+            {
+                if (Convert.ToString(Myrow.Cells[4].Value) == "DA")
+                {
+                    Myrow.Cells[4].Style.BackColor = Color.Red;
+                }
+                else
+                {
+                    Myrow.Cells[4].Style.BackColor = Color.Green;
+                }
+            }
+        }
+
+        private void dgVelika_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                ProfilClana pc = new ProfilClana(this, int.Parse(dgVelika.CurrentRow.Cells[0].Value.ToString()));
+                pc.Owner = this;
+                pc.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error pri otvaranju profila: " + ex);
             }
         }
     }

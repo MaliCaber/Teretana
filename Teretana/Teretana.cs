@@ -12,6 +12,7 @@ namespace Teretana
     {
         private OleDbConnection connection = new OleDbConnection();
         int ID;
+        DateTime date = DateTime.MaxValue;
         public Teretana()
         {
             InitializeComponent();
@@ -90,35 +91,21 @@ namespace Teretana
                             connection.Open();
                             OleDbCommand command = new OleDbCommand();
                             command.Connection = connection;
-                            command.CommandText = "select MAX([DatumIsteka]) from Clanarine where [IDclana]=" + (double)ID;
+                            command.CommandText = "select IIf(IsNull(MAX([DatumIsteka])), #"+ DateTime.MinValue + "# , MAX([DatumIsteka])) from Clanarine where [IDclana]=" + (double)ID + " ";
                             OleDbDataReader reader = command.ExecuteReader();
                             while (reader.Read())
                             {
-                                if (reader[0] != DBNull.Value)
-                                {
-                                    DateTime date = DateTime.Parse(reader[0].ToString());
+                                    date = DateTime.Parse(reader[0].ToString());
                                     if (DateTime.Compare(date, DateTime.Now) >= 0)
                                     {
-                                        azurirajPodatke();
+                                        azurirajPodatkeDA();
                                     }
                                     else
                                     {
-                                        Console.Beep(2000, 1000);
-                                        Console.Beep(2000, 1000);
-                                        Console.Beep(2000, 1000);
-                                        MessageBox.Show("Istekla clanarina");
+                                        azurirajPodatkeNE();
                                     }
-                                }
-                                else
-                                {
-                                    Console.Beep(2000, 1000);
-                                    Console.Beep(2000, 1000);
-                                    Console.Beep(2000, 1000);
-                                    MessageBox.Show("Nikad nije uplatio clanarinu");
-                                }
                             }
                             reader.Close();
-
                         }
                         catch (Exception ex)
                         {
@@ -128,8 +115,6 @@ namespace Teretana
                         {
                             connection.Close();
                         }
-
-
                     }
                 }
             }
@@ -137,23 +122,19 @@ namespace Teretana
             {
                 MessageBox.Show("Error while decoding QR code" + ex);
             }
+            
         }
 
-        private void azurirajPodatke()
+        private void azurirajPodatkeDA()
         {
             try
             {
                 OleDbCommand command = new OleDbCommand();
                 command.Connection = connection;
-                command.CommandText = "insert into Posete ([IDclana], [Datum]) " +
-                    "values(" + (double)ID + ", '" + DateTime.Now + "')";
+                command.CommandText = "insert into Posete ([IDclana], [Datum], [Istekla]) " +
+                    "values(" + (double)ID + ", '" + DateTime.Now + "', 'NE')";
                 command.ExecuteNonQuery();
-                //DODAJ ZVUK AKO JE UNETO AAAAAA
-                //
-                //PROVERA DATUMA ISTEKA CLANARINE
-                //
-                //
-                //
+
                 Console.Beep(2000, 1000);
                 command.Dispose();
                 azurirajPosete();
@@ -163,6 +144,27 @@ namespace Teretana
                 MessageBox.Show("Error pri unosu: " + ey);
             }
         }
+
+        private void azurirajPodatkeNE()
+        {
+            try
+            {
+                OleDbCommand command = new OleDbCommand();
+                command.Connection = connection;
+                command.CommandText = "insert into Posete ([IDclana], [Datum], [Istekla]) " +
+                    "values(" + (double)ID + ", '" + DateTime.Now + "', 'DA')";
+                command.ExecuteNonQuery();
+
+                Console.Beep(2000, 1000);
+                command.Dispose();
+                azurirajPosete();
+            }
+            catch (Exception ey)
+            {
+                MessageBox.Show("Error pri unosu: " + ey);
+            }
+        }
+
 
         public void azurirajPosete()
         {

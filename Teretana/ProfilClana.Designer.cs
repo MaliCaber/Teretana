@@ -235,7 +235,7 @@
             dgUplate.Name = "dgUplate";
             dgUplate.ReadOnly = true;
             dgUplate.RowTemplate.Height = 25;
-            dgUplate.Size = new Size(457, 220);
+            dgUplate.Size = new Size(457, 318);
             dgUplate.TabIndex = 34;
             // 
             // label9
@@ -250,7 +250,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(633, 246);
+            label10.Location = new Point(633, 363);
             label10.Name = "label10";
             label10.Size = new Size(45, 15);
             label10.TabIndex = 36;
@@ -261,11 +261,11 @@
             dgPosete.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgPosete.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgPosete.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgPosete.Location = new Point(694, 246);
+            dgPosete.Location = new Point(694, 363);
             dgPosete.Name = "dgPosete";
             dgPosete.ReadOnly = true;
             dgPosete.RowTemplate.Height = 25;
-            dgPosete.Size = new Size(300, 118);
+            dgPosete.Size = new Size(300, 300);
             dgPosete.TabIndex = 37;
             // 
             // btnIzmeni
