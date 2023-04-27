@@ -265,6 +265,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "DodajClana";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Dodaj clana";
             Load += DodajClana_Load;
             ((System.ComponentModel.ISupportInitialize)pbSlika).EndInit();

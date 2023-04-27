@@ -229,6 +229,7 @@
             Controls.Add(label1);
             Controls.Add(lbConnection);
             Name = "Clanarina";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Clanarina";
             FormClosing += Clanarina_FormClosing;
             Load += Clanarina_Load;

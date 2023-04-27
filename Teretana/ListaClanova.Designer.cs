@@ -152,6 +152,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "ListaClanova";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ListaClanova";
             Load += ListaClanova_Load;
             gbPretraga.ResumeLayout(false);

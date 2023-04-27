@@ -363,6 +363,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "ProfilClana";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ProfilClana";
             FormClosing += ProfilClana_FormClosing;
             Load += ProfilClana_Load;

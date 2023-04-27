@@ -37,6 +37,8 @@
             btnStartCamera = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
             pbCamera = new PictureBox();
+            label1 = new Label();
+            tbBrojPoseta = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pbCamera).BeginInit();
             SuspendLayout();
             // 
@@ -117,11 +119,31 @@
             pbCamera.TabIndex = 6;
             pbCamera.TabStop = false;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(311, 92);
+            label1.Name = "label1";
+            label1.Size = new Size(103, 15);
+            label1.TabIndex = 7;
+            label1.Text = "Broj poseta danas:";
+            // 
+            // tbBrojPoseta
+            // 
+            tbBrojPoseta.Location = new Point(420, 89);
+            tbBrojPoseta.Name = "tbBrojPoseta";
+            tbBrojPoseta.ReadOnly = true;
+            tbBrojPoseta.Size = new Size(100, 23);
+            tbBrojPoseta.TabIndex = 8;
+            tbBrojPoseta.Text = "0";
+            // 
             // Teretana
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(559, 333);
+            Controls.Add(tbBrojPoseta);
+            Controls.Add(label1);
             Controls.Add(pbCamera);
             Controls.Add(btnStartCamera);
             Controls.Add(cbDevices);
@@ -132,11 +154,13 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "Teretana";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             FormClosing += Form1_FormClosing;
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pbCamera).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -149,5 +173,7 @@
         private Button btnStartCamera;
         private System.Windows.Forms.Timer timer1;
         private PictureBox pbCamera;
+        private Label label1;
+        private TextBox tbBrojPoseta;
     }
 }

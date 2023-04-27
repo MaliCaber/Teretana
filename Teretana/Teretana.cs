@@ -1,6 +1,8 @@
 using AForge.Video.DirectShow;
 using System;
+using System.Data;
 using System.Data.OleDb;
+using System.Runtime.Intrinsics.Arm;
 using ZXing;
 using ZXing.Windows.Compatibility;
 
@@ -28,6 +30,7 @@ namespace Teretana
             }
             cbDevices.SelectedIndex = 0;
             captureDevice = new VideoCaptureDevice(filterInfoCollection[cbDevices.SelectedIndex].MonikerString);
+            azurirajPoseteLoad();
         }
 
         private void btnDodaj_Click(object sender, EventArgs e)
@@ -81,7 +84,52 @@ namespace Teretana
                     if (result != null && ID != int.Parse(result.ToString()))
                     {
                         ID = int.Parse(result.ToString());
-                        azurirajPodatke();
+                        //ako je placeno azuriraj
+                        try
+                        {
+                            connection.Open();
+                            OleDbCommand command = new OleDbCommand();
+                            command.Connection = connection;
+                            command.CommandText = "select MAX([DatumIsteka]) from Clanarine where [IDclana]=" + (double)ID;
+                            OleDbDataReader reader = command.ExecuteReader();
+                            while (reader.Read())
+                            {
+                                if (reader[0] != DBNull.Value)
+                                {
+                                    DateTime date = DateTime.Parse(reader[0].ToString());
+                                    if (DateTime.Compare(date, DateTime.Now) >= 0)
+                                    {
+                                        azurirajPodatke();
+                                    }
+                                    else
+                                    {
+                                        Console.Beep(2000, 1000);
+                                        Console.Beep(2000, 1000);
+                                        Console.Beep(2000, 1000);
+                                        MessageBox.Show("Istekla clanarina");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.Beep(2000, 1000);
+                                    Console.Beep(2000, 1000);
+                                    Console.Beep(2000, 1000);
+                                    MessageBox.Show("Nikad nije uplatio clanarinu");
+                                }
+                            }
+                            reader.Close();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error pri prikazu podataka clanarine: " + ex);
+                        }
+                        finally
+                        {
+                            connection.Close();
+                        }
+
+
                     }
                 }
             }
@@ -95,7 +143,6 @@ namespace Teretana
         {
             try
             {
-                connection.Open();
                 OleDbCommand command = new OleDbCommand();
                 command.Connection = connection;
                 command.CommandText = "insert into Posete ([IDclana], [Datum]) " +
@@ -107,12 +154,62 @@ namespace Teretana
                 //
                 //
                 //
+                Console.Beep(2000, 1000);
                 command.Dispose();
-
+                azurirajPosete();
             }
             catch (Exception ey)
             {
                 MessageBox.Show("Error pri unosu: " + ey);
+            }
+        }
+
+        public void azurirajPosete()
+        {
+            try
+            {
+                OleDbCommand command = new OleDbCommand();
+                command.Connection = connection;
+                command.CommandText = "select COUNT(*) from Posete where [Datum] >= #" + DateTime.Today + "#";
+                OleDbDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader[0] != DBNull.Value)
+                    {
+                        tbBrojPoseta.Text = reader[0].ToString();
+                    }
+                }
+                reader.Close();
+                command.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error pri prikazu broja poseta: " + ex);
+            }
+        }
+
+        public void azurirajPoseteLoad()
+        {
+            try
+            {
+                connection.Open();
+                OleDbCommand command = new OleDbCommand();
+                command.Connection = connection;
+                command.CommandText = "select COUNT(*) from Posete where [Datum] >= #" + DateTime.Today + "#";
+                OleDbDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader[0] != DBNull.Value)
+                    {
+                        tbBrojPoseta.Text = reader[0].ToString();
+                    }
+                }
+                reader.Close();
+                command.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error pri prikazu broja poseta: " + ex);
             }
             finally
             {

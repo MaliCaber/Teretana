@@ -52,6 +52,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "Posete";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Posete";
             Load += Posete_Load;
             ((System.ComponentModel.ISupportInitialize)dgVelika).EndInit();

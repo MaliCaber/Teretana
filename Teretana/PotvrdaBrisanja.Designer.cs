@@ -62,6 +62,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MinimizeBox = false;
             Name = "PotvrdaBrisanja";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "PotvrdaBrisanja";
             Load += PotvrdaBrisanja_Load;
             ResumeLayout(false);
