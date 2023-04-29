@@ -155,7 +155,7 @@
             MaximizeBox = false;
             Name = "Teretana";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Teretana";
             FormClosing += Form1_FormClosing;
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pbCamera).EndInit();

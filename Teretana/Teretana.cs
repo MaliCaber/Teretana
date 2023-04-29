@@ -91,19 +91,19 @@ namespace Teretana
                             connection.Open();
                             OleDbCommand command = new OleDbCommand();
                             command.Connection = connection;
-                            command.CommandText = "select IIf(IsNull(MAX([DatumIsteka])), #"+ DateTime.MinValue + "# , MAX([DatumIsteka])) from Clanarine where [IDclana]=" + (double)ID + " ";
+                            command.CommandText = "select IIf(IsNull(MAX([DatumIsteka])), #" + DateTime.MinValue + "# , MAX([DatumIsteka])) from Clanarine where [IDclana]=" + (double)ID + " ";
                             OleDbDataReader reader = command.ExecuteReader();
                             while (reader.Read())
                             {
-                                    date = DateTime.Parse(reader[0].ToString());
-                                    if (DateTime.Compare(date, DateTime.Now) >= 0)
-                                    {
-                                        azurirajPodatkeDA();
-                                    }
-                                    else
-                                    {
-                                        azurirajPodatkeNE();
-                                    }
+                                date = DateTime.Parse(reader[0].ToString());
+                                if (DateTime.Compare(date, DateTime.Now) >= 0)
+                                {
+                                    azurirajPodatkeDA();
+                                }
+                                else
+                                {
+                                    azurirajPodatkeNE();
+                                }
                             }
                             reader.Close();
                         }
@@ -122,7 +122,7 @@ namespace Teretana
             {
                 MessageBox.Show("Error while decoding QR code" + ex);
             }
-            
+
         }
 
         private void azurirajPodatkeDA()
