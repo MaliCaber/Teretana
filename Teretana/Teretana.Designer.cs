@@ -120,7 +120,7 @@
             // 
             // btnPostavke
             // 
-            btnPostavke.Location = new Point(485, 297);
+            btnPostavke.Location = new Point(485, 269);
             btnPostavke.Name = "btnPostavke";
             btnPostavke.Size = new Size(65, 23);
             btnPostavke.TabIndex = 9;
@@ -132,7 +132,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(559, 333);
+            ClientSize = new Size(559, 300);
             Controls.Add(btnPostavke);
             Controls.Add(tbBrojPoseta);
             Controls.Add(label1);

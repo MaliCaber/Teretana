@@ -87,7 +87,7 @@ namespace Teretana
                             captureDevice.Stop();
                         }
                         azurirajPodatke();
-                        MessageBox.Show("Uspesno skenirano");
+                        Console.Beep(2000, 1000);
                     }
                 }
             }

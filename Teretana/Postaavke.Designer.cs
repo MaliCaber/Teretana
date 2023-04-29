@@ -30,8 +30,6 @@
         {
             label1 = new Label();
             cbKamera = new ComboBox();
-            label2 = new Label();
-            cbAudio = new ComboBox();
             btnSacuvaj = new Button();
             SuspendLayout();
             // 
@@ -52,26 +50,9 @@
             cbKamera.Size = new Size(121, 23);
             cbKamera.TabIndex = 1;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(12, 58);
-            label2.Name = "label2";
-            label2.Size = new Size(42, 15);
-            label2.TabIndex = 2;
-            label2.Text = "Audio:";
-            // 
-            // cbAudio
-            // 
-            cbAudio.FormattingEnabled = true;
-            cbAudio.Location = new Point(68, 55);
-            cbAudio.Name = "cbAudio";
-            cbAudio.Size = new Size(121, 23);
-            cbAudio.TabIndex = 3;
-            // 
             // btnSacuvaj
             // 
-            btnSacuvaj.Location = new Point(68, 96);
+            btnSacuvaj.Location = new Point(59, 68);
             btnSacuvaj.Name = "btnSacuvaj";
             btnSacuvaj.Size = new Size(75, 23);
             btnSacuvaj.TabIndex = 4;
@@ -83,10 +64,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(207, 133);
+            ClientSize = new Size(207, 103);
             Controls.Add(btnSacuvaj);
-            Controls.Add(cbAudio);
-            Controls.Add(label2);
             Controls.Add(cbKamera);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -103,8 +82,6 @@
 
         private Label label1;
         private ComboBox cbKamera;
-        private Label label2;
-        private ComboBox cbAudio;
         private Button btnSacuvaj;
     }
 }
