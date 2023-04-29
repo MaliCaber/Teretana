@@ -38,8 +38,6 @@
             tbPrezime = new TextBox();
             tbIme = new TextBox();
             pbCamera = new PictureBox();
-            cbDevices = new ComboBox();
-            btnStartCamera = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
             label4 = new Label();
             dateTimePicker1 = new DateTimePicker();
@@ -124,24 +122,6 @@
             pbCamera.TabIndex = 7;
             pbCamera.TabStop = false;
             // 
-            // cbDevices
-            // 
-            cbDevices.FormattingEnabled = true;
-            cbDevices.Location = new Point(384, 168);
-            cbDevices.Name = "cbDevices";
-            cbDevices.Size = new Size(199, 23);
-            cbDevices.TabIndex = 8;
-            // 
-            // btnStartCamera
-            // 
-            btnStartCamera.Location = new Point(435, 197);
-            btnStartCamera.Name = "btnStartCamera";
-            btnStartCamera.Size = new Size(100, 23);
-            btnStartCamera.TabIndex = 9;
-            btnStartCamera.Text = "Start Camera";
-            btnStartCamera.UseVisualStyleBackColor = true;
-            btnStartCamera.Click += btnStartCamera_Click;
-            // 
             // timer1
             // 
             timer1.Interval = 1000;
@@ -218,8 +198,6 @@
             Controls.Add(tbIznos);
             Controls.Add(dateTimePicker1);
             Controls.Add(label4);
-            Controls.Add(btnStartCamera);
-            Controls.Add(cbDevices);
             Controls.Add(pbCamera);
             Controls.Add(tbIme);
             Controls.Add(tbPrezime);
@@ -228,6 +206,8 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(lbConnection);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "Clanarina";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Clanarina";
@@ -248,8 +228,6 @@
         private TextBox tbPrezime;
         private TextBox tbIme;
         private PictureBox pbCamera;
-        private ComboBox cbDevices;
-        private Button btnStartCamera;
         private System.Windows.Forms.Timer timer1;
         private Label label4;
         private DateTimePicker dateTimePicker1;

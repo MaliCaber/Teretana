@@ -33,12 +33,11 @@
             btnClanarina = new Button();
             btnListaClanova = new Button();
             btnPosete = new Button();
-            cbDevices = new ComboBox();
-            btnStartCamera = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
             pbCamera = new PictureBox();
             label1 = new Label();
             tbBrojPoseta = new TextBox();
+            btnPostavke = new Button();
             ((System.ComponentModel.ISupportInitialize)pbCamera).BeginInit();
             SuspendLayout();
             // 
@@ -86,24 +85,6 @@
             btnPosete.UseVisualStyleBackColor = true;
             btnPosete.Click += btnPosete_Click;
             // 
-            // cbDevices
-            // 
-            cbDevices.FormattingEnabled = true;
-            cbDevices.Location = new Point(12, 298);
-            cbDevices.Name = "cbDevices";
-            cbDevices.Size = new Size(130, 23);
-            cbDevices.TabIndex = 4;
-            // 
-            // btnStartCamera
-            // 
-            btnStartCamera.Location = new Point(148, 298);
-            btnStartCamera.Name = "btnStartCamera";
-            btnStartCamera.Size = new Size(88, 23);
-            btnStartCamera.TabIndex = 5;
-            btnStartCamera.Text = "Start kamera";
-            btnStartCamera.UseVisualStyleBackColor = true;
-            btnStartCamera.Click += btnStartCamera_Click;
-            // 
             // timer1
             // 
             timer1.Interval = 1000;
@@ -137,16 +118,25 @@
             tbBrojPoseta.TabIndex = 8;
             tbBrojPoseta.Text = "0";
             // 
+            // btnPostavke
+            // 
+            btnPostavke.Location = new Point(485, 297);
+            btnPostavke.Name = "btnPostavke";
+            btnPostavke.Size = new Size(65, 23);
+            btnPostavke.TabIndex = 9;
+            btnPostavke.Text = "Postavke";
+            btnPostavke.UseVisualStyleBackColor = true;
+            btnPostavke.Click += btnPostavke_Click;
+            // 
             // Teretana
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(559, 333);
+            Controls.Add(btnPostavke);
             Controls.Add(tbBrojPoseta);
             Controls.Add(label1);
             Controls.Add(pbCamera);
-            Controls.Add(btnStartCamera);
-            Controls.Add(cbDevices);
             Controls.Add(btnPosete);
             Controls.Add(btnListaClanova);
             Controls.Add(btnClanarina);
@@ -169,11 +159,10 @@
         private Button btnClanarina;
         private Button btnListaClanova;
         private Button btnPosete;
-        private ComboBox cbDevices;
-        private Button btnStartCamera;
         private System.Windows.Forms.Timer timer1;
         private PictureBox pbCamera;
         private Label label1;
         private TextBox tbBrojPoseta;
+        private Button btnPostavke;
     }
 }

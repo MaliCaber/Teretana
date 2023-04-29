@@ -45,17 +45,7 @@ namespace Teretana
                 MessageBox.Show("Error " + ex);
             }
             filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-            foreach (FilterInfo filterInfo in filterInfoCollection)
-            {
-                cbDevices.Items.Add(filterInfo.Name);
-            }
-            cbDevices.SelectedIndex = 0;
-            captureDevice = new VideoCaptureDevice(filterInfoCollection[cbDevices.SelectedIndex].MonikerString);
-        }
-
-        private void btnStartCamera_Click(object sender, EventArgs e)
-        {
-            captureDevice = new VideoCaptureDevice(filterInfoCollection[cbDevices.SelectedIndex].MonikerString);
+            captureDevice = new VideoCaptureDevice(filterInfoCollection[Properties.Settings.Default.indexCamera].MonikerString);
             captureDevice.NewFrame += CaptureDevice_NewFrame;
             captureDevice.Start();
             timer1.Start();

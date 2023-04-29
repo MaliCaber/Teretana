@@ -25,12 +25,10 @@ namespace Teretana
         private void Form1_Load(object sender, EventArgs e)
         {
             filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-            foreach (FilterInfo filterInfo in filterInfoCollection)
-            {
-                cbDevices.Items.Add(filterInfo.Name);
-            }
-            cbDevices.SelectedIndex = 0;
-            captureDevice = new VideoCaptureDevice(filterInfoCollection[cbDevices.SelectedIndex].MonikerString);
+            captureDevice = new VideoCaptureDevice(filterInfoCollection[Properties.Settings.Default.indexCamera].MonikerString);
+            captureDevice.NewFrame += CaptureDevice_NewFrame; ;
+            captureDevice.Start();
+            timer1.Start();
             azurirajPoseteLoad();
         }
 
@@ -61,13 +59,6 @@ namespace Teretana
             listaclanova.Show();
         }
 
-        private void btnStartCamera_Click(object sender, EventArgs e)
-        {
-            captureDevice = new VideoCaptureDevice(filterInfoCollection[cbDevices.SelectedIndex].MonikerString);
-            captureDevice.NewFrame += CaptureDevice_NewFrame; ;
-            captureDevice.Start();
-            timer1.Start();
-        }
 
         private void CaptureDevice_NewFrame(object sender, AForge.Video.NewFrameEventArgs eventArgs)
         {
@@ -231,7 +222,7 @@ namespace Teretana
         }
         public void startCamera()
         {
-            captureDevice = new VideoCaptureDevice(filterInfoCollection[cbDevices.SelectedIndex].MonikerString);
+            captureDevice = new VideoCaptureDevice(filterInfoCollection[Properties.Settings.Default.indexCamera].MonikerString);
             captureDevice.NewFrame += CaptureDevice_NewFrame; ;
             captureDevice.Start();
             timer1.Start();
@@ -240,6 +231,13 @@ namespace Teretana
         private void btnPosete_Click(object sender, EventArgs e)
         {
             Posete p = new Posete();
+            p.Owner = this;
+            p.Show();
+        }
+
+        private void btnPostavke_Click(object sender, EventArgs e)
+        {
+            Postaavke p = new Postaavke();
             p.Owner = this;
             p.Show();
         }
